@@ -5,7 +5,7 @@ Elle reprend la présentation « Stratégie Candidats WhatsApp » en version int
 
 ---
 
-## 📋 Fonctionnalités
+## Fonctionnalités
 
 - Navigation slide par slide dans la stratégie.
 - Présentation des concepts, segmentation, KPIs et roadmap.
@@ -15,7 +15,7 @@ Elle reprend la présentation « Stratégie Candidats WhatsApp » en version int
 
 ---
 
-## 📝 Contenu des slides
+## Contenu des slides
 
 - **Concept** : Chaînes et groupes WhatsApp, automatisation avec Jarvi/Recruitee.
 - **Segmentation** : par secteur et par localisation.
@@ -26,11 +26,4 @@ Elle reprend la présentation « Stratégie Candidats WhatsApp » en version int
 - **Roadmap 30 jours** : plan de déploiement.
 - **Résultat attendu** : audience qualifiée et réactive.
 
----
 
-## 🚀 Lancer l’application en local
-
-1. **Cloner** ce dépôt ou télécharger le fichier `.py`.
-2. **Installer Streamlit** (si pas déjà installé) :
-   ```bash
-   pip install streamlit
