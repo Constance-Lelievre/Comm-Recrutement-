@@ -1,34 +1,40 @@
 import streamlit as st
 
 # --- CONFIG ---
-# DOIT être la première commande Streamlit
 st.set_page_config(
     page_title="Stratégie Candidats WhatsApp",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# --- STYLE CSS pour fond blanc et texte noir ---
+# --- STYLE CSS pour tout centrer ---
 st.markdown("""
 <style>
+    /* Fond blanc, texte noir */
     .stApp {
         background-color: white;
         color: black;
     }
-    .stMarkdown, .stTitle, .stHeader, .stWrite {
+    /* Centrer tous les titres et sous-titres */
+    .stTitle, .stHeader {
         text-align: center;
-        color: black;
     }
-    .stButton>button {
-        color: black;
-        background-color: white;
-    }
-    .stTextInput>div>div>input, .stTextArea>div>div>textarea {
-        color: black;
-        background-color: white;
-    }
-    .st-bf {
+    /* Centrer le contenu des colonnes et le texte */
+    .stMarkdown, .stWrite {
         text-align: center;
+    }
+    /* Centrer les puces (listes) */
+    .stWrite ul {
+        text-align: left;
+        display: inline-block;
+        float: none;
+        margin: 0 auto;
+    }
+    /* Centrer les images et autres éléments */
+    .stImage, .stButton>button {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
     /* Masquer la sidebar si besoin */
     .st-emotion-cache-1v0mbdj {
@@ -44,7 +50,6 @@ with col1:
 with col3:
     st.image("9914549e-8403-4fbb-9b00-938454800f08.jpg", width=100)
 st.markdown("---")
-
 # --- CONTENU DE LA PAGE ---
 st.title("Stratégie Candidats WhatsApp")
 
