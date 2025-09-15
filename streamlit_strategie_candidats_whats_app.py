@@ -5,8 +5,7 @@ import streamlit as st
 st.set_page_config(
     page_title="Stratégie Candidats WhatsApp",
     layout="wide",
-    page_background_color="white",
-    initial_sidebar_state="collapsed"
+    page_background_color="white"
 )
 
 # --- STYLE CSS ---
