@@ -1,78 +1,121 @@
 import streamlit as st
 
+# --- CONFIG PAGE ---
 st.set_page_config(page_title="Stratégie Candidats WhatsApp", layout="wide")
 
-# --- Initialiser l'état ---
-if "slide_index" not in st.session_state:
-    st.session_state.slide_index = 0
+# --- LOGOS ---
+col1, col2, col3 = st.columns([1,6,1])
+with col1:
+    st.image("1.png", width=100)  # ton logo entreprise
+with col3:
+    st.image("9914549e-8403-4fbb-9b00-938454800f08.jpg", width=100)  # logo WhatsApp
 
-# --- Définir tes slides ---
+st.markdown("---")
+
+# --- CONTENU DES SLIDES (TRAME SIMPLIFIÉE) ---
 slides = [
     {
-        "title": "Slide 1 : Introduction",
-        "content": "Objectifs, contexte et présentation générale de la stratégie WhatsApp."
+        "title": "Stratégie Candidats WhatsApp",
+        "content": [
+            "Objectifs et contexte"
+        ]
     },
     {
-        "title": "Slide 2 : Segmentation",
-        "content": "Segmentation des candidats par secteur et localisation."
+        "title": "Objectifs",
+        "content": [
+            "Construire une communauté qualifiée de candidats",
+            "Diffuser directement les offres d’emploi",
+            "Encourager le partage entre pairs",
+            "Améliorer la réactivité aux offres"
+        ]
     },
     {
-        "title": "Slide 3 : WhatsApp Business",
-        "content": "Comparatif WhatsApp Classique vs Business et tarification."
+        "title": "Concept général",
+        "content": [
+            "Inviter candidats retenus et écartés à rejoindre WhatsApp",
+            "Segmentation par secteur ou localisation",
+            "Publication d’offres directement dans les canaux",
+            "Les candidats invitent leurs contacts similaires"
+        ]
     },
     {
-        "title": "Slide 4 : KPIs & Roadmap",
-        "content": "Indicateurs de suivi, plan de déploiement et résultats attendus."
+        "title": "Groupes vs Chaînes",
+        "content": [
+            "Groupes : interaction bidirectionnelle",
+            "Chaînes : diffusion unidirectionnelle",
+            "Préconisation : utiliser les chaînes pour diffuser"
+        ]
+    },
+    {
+        "title": "Segmentation",
+        "content": [
+            "Par secteur (IT, santé, industrie…)",
+            "Par région",
+            "Possibilité de combiner secteur + région"
+        ]
+    },
+    {
+        "title": "Intégration Recruitee",
+        "content": [
+            "Export automatique des candidats",
+            "Invitations automatisées aux bons segments",
+            "Suivi centralisé de la base"
+        ]
+    },
+    {
+        "title": "WhatsApp Business",
+        "content": [
+            "API Cloud, catalogues, messages automatisés",
+            "Tarification officielle Meta (France 2025) : environ 0,1186 € par message marketing",
+            "Pas de coût fixe Meta ; frais possibles si prestataire tiers",
+            "Automatisation et suivi à grande échelle"
+        ]
+    },
+    {
+        "title": "Mesure & KPIs",
+        "content": [
+            "Nombre d’abonnés par chaîne",
+            "Taux de clics sur liens trackés",
+            "Nombre de candidatures issues de WhatsApp",
+            "Croissance mensuelle de la base",
+            "Engagement (partages, réponses)"
+        ]
+    },
+    {
+        "title": "Roadmap 30 jours",
+        "content": [
+            "S1 : création chaînes + intégration Recruitee",
+            "S2 : segmentation et invitations",
+            "S3 : publication offres et contenus",
+            "S4 : suivi KPIs et ajustements"
+        ]
+    },
+    {
+        "title": "Résultat attendu",
+        "content": [
+            "Audience qualifiée et réactive",
+            "Diffusion rapide des offres",
+            "Suivi précis du ROI via KPIs",
+            "Canal propriétaire complémentaire aux emails"
+        ]
     }
 ]
 
-# --- Fonctions de navigation ---
-def go_next():
-    if st.session_state.slide_index < len(slides) - 1:
-        st.session_state.slide_index += 1
+# --- GESTION DE L'ÉTAT DE PAGE ---
+if "page" not in st.session_state:
+    st.session_state.page = 0
 
-def go_prev():
-    if st.session_state.slide_index > 0:
-        st.session_state.slide_index -= 1
+# --- NAVIGATION ---
+col_prev, col_next = st.columns([1,1])
+with col_prev:
+    if st.button("⬅️ Précédent") and st.session_state.page > 0:
+        st.session_state.page -= 1
+with col_next:
+    if st.button("Suivant ➡️") and st.session_state.page < len(slides)-1:
+        st.session_state.page += 1
 
-# --- Affichage du contenu ---
-current_slide = slides[st.session_state.slide_index]
-st.title(current_slide["title"])
-st.write(current_slide["content"])
-
-# --- Boutons de navigation ---
-col1, col2 = st.columns([1,1])
-with col1:
-    st.button("⬅️ Précédent", on_click=go_prev)
-with col2:
-    st.button("Suivant ➡️", on_click=go_next)
-
-st.write(f"Slide {st.session_state.slide_index + 1} / {len(slides)}")
-
-# --- Script JS pour capturer les flèches du clavier ---
-keyboard_script = """
-<script>
-document.addEventListener('keydown', function(e) {
-    if(e.key === "ArrowRight"){
-        fetch(window.location.href + "?arrow=next")
-        .then(()=>window.location.reload());
-    }
-    if(e.key === "ArrowLeft"){
-        fetch(window.location.href + "?arrow=prev")
-        .then(()=>window.location.reload());
-    }
-});
-</script>
-"""
-st.markdown(keyboard_script, unsafe_allow_html=True)
-
-# --- Récupérer le paramètre via st.query_params ---
-params = st.query_params  # nouveau standard Streamlit
-
-if "arrow" in params:
-    if params["arrow"] == "next":
-        go_next()
-        st.query_params.clear()  # reset le paramètre pour éviter de boucler
-    elif params["arrow"] == "prev":
-        go_prev()
-        st.query_params.clear()
+# --- AFFICHAGE SLIDE ---
+slide = slides[st.session_state.page]
+st.header(f"Slide {st.session_state.page+1} / {len(slides)} : {slide['title']}")
+for bullet in slide["content"]:
+    st.write(f"- {bullet}")
