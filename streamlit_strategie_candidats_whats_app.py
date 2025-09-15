@@ -7,13 +7,14 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# --- STYLE CSS pour centrage, espace et couleur bleue ---
+# --- STYLE CSS pour centrage, espace, couleur bleue et taille de texte ---
 st.markdown("""
 <style>
     /* Fond blanc, texte bleu par défaut */
     .stApp {
         background-color: white;
         color: #1E90FF;  /* Bleu clair */
+        font-size: 18px;  /* Taille de base du texte */
     }
     /* Centrer TOUS les éléments enfants de .stApp */
     .stApp > div {
@@ -24,14 +25,15 @@ st.markdown("""
         text-align: center;
         width: 100%;
     }
-    /* Centrer les titres et sous-titres, couleur bleue */
+    /* Centrer les titres et sous-titres, couleur bleue, taille augmentée */
     h1, h2, h3, h4, h5, h6, .stTitle, .stHeader {
         text-align: center !important;
         width: 100%;
         color: #1E90FF !important;
-        margin-bottom: 2.5rem !important;  /* Espace sous chaque titre/section */
+        margin-bottom: 2.5rem !important;
+        font-size: 24px !important;  /* Taille des titres/sous-titres */
     }
-    /* Centrer les listes à puces, couleur bleue */
+    /* Centrer les listes à puces, couleur bleue, taille augmentée */
     ul {
         text-align: center !important;
         list-style-position: inside;
@@ -39,12 +41,14 @@ st.markdown("""
         width: 100%;
         color: #1E90FF !important;
         line-height: 1.8;
+        font-size: 20px !important;  /* Taille des puces */
     }
-    /* Centrer le texte et les éléments st.write, couleur bleue */
+    /* Centrer le texte et les éléments st.write, couleur bleue, taille augmentée */
     .stMarkdown, .stWrite {
         text-align: center !important;
         width: 100%;
         color: #1E90FF !important;
+        font-size: 20px !important;
     }
     /* Centrer les images */
     .stImage {
@@ -59,6 +63,10 @@ st.markdown("""
     /* Espace supplémentaire entre les sections */
     .stHeader {
         margin-top: 2rem !important;
+    }
+    /* Taille du titre principal */
+    h1 {
+        font-size: 32px !important;
     }
 </style>
 """, unsafe_allow_html=True)
