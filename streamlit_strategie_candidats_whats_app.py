@@ -1,15 +1,44 @@
 import streamlit as st
 
 # --- CONFIG ---
-st.set_page_config(page_title="Stratégie Candidats WhatsApp", layout="wide")
+st.set_page_config(
+    page_title="Stratégie Candidats WhatsApp",
+    layout="wide",
+    page_background_color="white",  # Fond blanc
+    initial_sidebar_state="collapsed"  # Masque la sidebar si tu ne l'utilises pas
+)
+
+# Style CSS pour centrer le contenu et texte noir
+st.markdown("""
+<style>
+    .stApp {
+        background-color: white;
+        color: black;
+    }
+    .stMarkdown, .stTitle, .stHeader, .stWrite {
+        text-align: center;
+        color: black;
+    }
+    .stButton>button {
+        color: black;
+        background-color: white;
+    }
+    .stTextInput>div>div>input, .stTextArea>div>div>textarea {
+        color: black;
+        background-color: white;
+    }
+    .st-bf {  /* Pour les colonnes */
+        text-align: center;
+    }
+</style>
+""", unsafe_allow_html=True)
 
 # --- LOGOS ---
 col1, col2, col3 = st.columns([1,6,1])
 with col1:
-    st.image("1.png", width=100)  # ton logo entreprise
+    st.image("1.png", width=100)
 with col3:
-    st.image("9914549e-8403-4fbb-9b00-938454800f08.jpg", width=100)  # logo WhatsApp
-
+    st.image("9914549e-8403-4fbb-9b00-938454800f08.jpg", width=100)
 st.markdown("---")
 
 # --- CONTENU DE LA PAGE ---
@@ -27,51 +56,4 @@ st.header("Concept général")
 st.write("- Inviter candidats retenus et écartés à rejoindre WhatsApp")
 st.write("- Segmentation par secteur ou localisation")
 st.write("- Publication d’offres directement dans les canaux")
-st.write("- Les candidats invitent leurs contacts similaires")
-
-# Groupes vs Chaînes
-st.header("Groupes vs Chaînes")
-st.write("- Groupes : interaction bidirectionnelle")
-st.write("- Chaînes : diffusion unidirectionnelle")
-st.write("- Préconisation : utiliser les chaînes pour diffuser")
-
-# Segmentation
-st.header("Segmentation")
-st.write("- Par secteur (IT, santé, industrie…)")
-st.write("- Par région")
-st.write("- Possibilité de combiner secteur + région")
-
-# Intégration Jarvi
-st.header("Intégration Jarvi")
-st.write("- Export automatique des candidats depuis Jarvi")
-st.write("- Invitations automatisées aux bons segments")
-st.write("- Suivi centralisé de la base")
-
-# WhatsApp Business
-st.header("WhatsApp Business")
-st.write("- API Cloud, catalogues, messages automatisés")
-st.write("- Tarification officielle Meta (France 2025) : environ 0,1186 € par message marketing")
-st.write("- Pas de coût fixe Meta ; frais possibles si prestataire tiers")
-st.write("- Automatisation et suivi à grande échelle")
-
-# Mesure & KPIs
-st.header("Mesure & KPIs")
-st.write("- Nombre d’abonnés par chaîne")
-st.write("- Taux de clics sur liens trackés")
-st.write("- Nombre de candidatures issues de WhatsApp")
-st.write("- Croissance mensuelle de la base")
-st.write("- Engagement (partages, réponses)")
-
-# Roadmap 30 jours
-st.header("Roadmap 30 jours")
-st.write("- S1 : création chaînes + intégration Jarvi")
-st.write("- S2 : segmentation et invitations")
-st.write("- S3 : publication offres et contenus")
-st.write("- S4 : suivi KPIs et ajustements")
-
-# Résultat attendu
-st.header("Résultat attendu")
-st.write("- Audience qualifiée et réactive")
-st.write("- Diffusion rapide des offres")
-st.write("- Suivi précis du ROI via KPIs")
-st.write("- Canal propriétaire complémentaire aux emails")
+st.write("- Les candidats invitent leurs
