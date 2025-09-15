@@ -7,13 +7,13 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# --- STYLE CSS pour un centrage absolu ---
+# --- STYLE CSS pour centrage, espace et couleur bleue ---
 st.markdown("""
 <style>
-    /* Fond blanc, texte noir */
+    /* Fond blanc, texte bleu par défaut */
     .stApp {
         background-color: white;
-        color: black;
+        color: #1E90FF;  /* Bleu clair */
     }
     /* Centrer TOUS les éléments enfants de .stApp */
     .stApp > div {
@@ -24,22 +24,27 @@ st.markdown("""
         text-align: center;
         width: 100%;
     }
-    /* Centrer les titres et sous-titres */
+    /* Centrer les titres et sous-titres, couleur bleue */
     h1, h2, h3, h4, h5, h6, .stTitle, .stHeader {
         text-align: center !important;
         width: 100%;
+        color: #1E90FF !important;
+        margin-bottom: 2.5rem !important;  /* Espace sous chaque titre/section */
     }
-    /* Centrer les listes à puces */
+    /* Centrer les listes à puces, couleur bleue */
     ul {
         text-align: center !important;
         list-style-position: inside;
         padding-left: 0 !important;
         width: 100%;
+        color: #1E90FF !important;
+        line-height: 1.8;
     }
-    /* Centrer le texte et les éléments st.write */
+    /* Centrer le texte et les éléments st.write, couleur bleue */
     .stMarkdown, .stWrite {
         text-align: center !important;
         width: 100%;
+        color: #1E90FF !important;
     }
     /* Centrer les images */
     .stImage {
@@ -50,6 +55,10 @@ st.markdown("""
     /* Masquer la sidebar */
     .st-emotion-cache-1v0mbdj {
         display: none;
+    }
+    /* Espace supplémentaire entre les sections */
+    .stHeader {
+        margin-top: 2rem !important;
     }
 </style>
 """, unsafe_allow_html=True)
