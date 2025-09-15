@@ -6,7 +6,7 @@ st.set_page_config(page_title="Stratégie Candidats WhatsApp", layout="wide")
 if "slide_index" not in st.session_state:
     st.session_state.slide_index = 0
 
-# --- Définir tes slides ici ---
+# --- Définir tes slides ---
 slides = [
     {
         "title": "Slide 1 : Introduction",
@@ -54,21 +54,25 @@ keyboard_script = """
 <script>
 document.addEventListener('keydown', function(e) {
     if(e.key === "ArrowRight"){
-        window.parent.postMessage({isStreamlitMessage: true, type: "streamlit:setComponentValue", value: "next"}, "*")
+        fetch(window.location.href + "?arrow=next")
+        .then(()=>window.location.reload());
     }
     if(e.key === "ArrowLeft"){
-        window.parent.postMessage({isStreamlitMessage: true, type: "streamlit:setComponentValue", value: "prev"}, "*")
+        fetch(window.location.href + "?arrow=prev")
+        .then(()=>window.location.reload());
     }
 });
 </script>
 """
 st.markdown(keyboard_script, unsafe_allow_html=True)
 
-# --- Récupérer les événements clavier ---
-# Astuce : on utilise un widget invisible qui change quand JS envoie "next" ou "prev"
-event = st.experimental_get_query_params().get("arrow", [""])[0]
+# --- Récupérer le paramètre via st.query_params ---
+params = st.query_params  # nouveau standard Streamlit
 
-# On lit le paramètre Streamlit spécial si dispo
-if "keyboard_nav" not in st.session_state:
-    st.session
-
+if "arrow" in params:
+    if params["arrow"] == "next":
+        go_next()
+        st.query_params.clear()  # reset le paramètre pour éviter de boucler
+    elif params["arrow"] == "prev":
+        go_prev()
+        st.query_params.clear()
