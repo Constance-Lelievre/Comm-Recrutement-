@@ -1,14 +1,15 @@
 import streamlit as st
 
 # --- CONFIG ---
+# Cette ligne DOIT être la première commande Streamlit
 st.set_page_config(
     page_title="Stratégie Candidats WhatsApp",
     layout="wide",
-    page_background_color="white",  # Fond blanc
-    initial_sidebar_state="collapsed"  # Masque la sidebar si tu ne l'utilises pas
+    page_background_color="white",
+    initial_sidebar_state="collapsed"
 )
 
-# Style CSS pour centrer le contenu et texte noir
+# --- STYLE CSS ---
 st.markdown("""
 <style>
     .stApp {
@@ -27,7 +28,7 @@ st.markdown("""
         color: black;
         background-color: white;
     }
-    .st-bf {  /* Pour les colonnes */
+    .st-bf {
         text-align: center;
     }
 </style>
