@@ -7,7 +7,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# --- STYLE CSS pour tout centrer ---
+# --- STYLE CSS pour un centrage absolu ---
 st.markdown("""
 <style>
     /* Fond blanc, texte noir */
@@ -15,28 +15,39 @@ st.markdown("""
         background-color: white;
         color: black;
     }
-    /* Centrer tous les titres et sous-titres */
-    .stTitle, .stHeader {
+    /* Centrer TOUS les éléments enfants de .stApp */
+    .stApp > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         text-align: center;
+        width: 100%;
     }
-    /* Centrer le contenu des colonnes et le texte */
+    /* Centrer les titres et sous-titres */
+    h1, h2, h3, h4, h5, h6, .stTitle, .stHeader {
+        text-align: center !important;
+        width: 100%;
+    }
+    /* Centrer les listes à puces */
+    ul {
+        text-align: center !important;
+        list-style-position: inside;
+        padding-left: 0 !important;
+        width: 100%;
+    }
+    /* Centrer le texte et les éléments st.write */
     .stMarkdown, .stWrite {
-        text-align: center;
+        text-align: center !important;
+        width: 100%;
     }
-    /* Centrer les puces (listes) */
-   .stWrite ul {
-    text-align: center;
-    list-style-position: inside;
-    padding-left: 0;
-    }
-
-    /* Centrer les images et autres éléments */
-    .stImage, .stButton>button {
+    /* Centrer les images */
+    .stImage {
         display: block;
         margin-left: auto;
         margin-right: auto;
     }
-    /* Masquer la sidebar si besoin */
+    /* Masquer la sidebar */
     .st-emotion-cache-1v0mbdj {
         display: none;
     }
