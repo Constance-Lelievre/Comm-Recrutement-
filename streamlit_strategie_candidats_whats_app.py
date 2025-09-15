@@ -7,14 +7,14 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# --- STYLE CSS pour centrage, espace, couleur bleue et taille de texte ---
+# --- STYLE CSS pour centrage, espace MAX, couleur bleue et taille de texte ---
 st.markdown("""
 <style>
     /* Fond blanc, texte bleu par défaut */
     .stApp {
         background-color: white;
-        color: #1E90FF;  /* Bleu clair */
-        font-size: 18px;  /* Taille de base du texte */
+        color: #1E90FF;
+        font-size: 18px;
     }
     /* Centrer TOUS les éléments enfants de .stApp */
     .stApp > div {
@@ -30,8 +30,13 @@ st.markdown("""
         text-align: center !important;
         width: 100%;
         color: #1E90FF !important;
-        margin-bottom: 2.5rem !important;
-        font-size: 24px !important;  /* Taille des titres/sous-titres */
+        font-size: 24px !important;
+        margin-top: 3rem !important;  /* Espace AVANT le titre */
+        margin-bottom: 1rem !important;
+    }
+    /* Espace APRES chaque bloc de contenu (listes à puces) */
+    .stMarkdown ul {
+        margin-bottom: 4rem !important;
     }
     /* Centrer les listes à puces, couleur bleue, taille augmentée */
     ul {
@@ -41,7 +46,7 @@ st.markdown("""
         width: 100%;
         color: #1E90FF !important;
         line-height: 1.8;
-        font-size: 20px !important;  /* Taille des puces */
+        font-size: 20px !important;
     }
     /* Centrer le texte et les éléments st.write, couleur bleue, taille augmentée */
     .stMarkdown, .stWrite {
@@ -60,13 +65,10 @@ st.markdown("""
     .st-emotion-cache-1v0mbdj {
         display: none;
     }
-    /* Espace supplémentaire entre les sections */
-    .stHeader {
-        margin-top: 2rem !important;
-    }
     /* Taille du titre principal */
     h1 {
         font-size: 32px !important;
+        margin-bottom: 2rem !important;
     }
 </style>
 """, unsafe_allow_html=True)
