@@ -24,12 +24,12 @@ st.markdown("""
         text-align: center;
     }
     /* Centrer les puces (listes) */
-    .stWrite ul {
-        text-align: left;
-        display: inline-block;
-        float: none;
-        margin: 0 auto;
+   .stWrite ul {
+    text-align: center;
+    list-style-position: inside;
+    padding-left: 0;
     }
+
     /* Centrer les images et autres éléments */
     .stImage, .stButton>button {
         display: block;
